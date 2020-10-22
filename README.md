@@ -29,4 +29,6 @@ Creating an Entity
 ```
 If you add ? as an answer to the type, you get all supported types
 E.g OneToMany
+
+If you want to add more properties just runt the make entity command again
 ```
