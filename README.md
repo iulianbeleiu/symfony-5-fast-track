@@ -32,3 +32,7 @@ E.g OneToMany
 
 If you want to add more properties just runt the make entity command again
 ```
+Run Migrations
+```
+symfony console make:migration
+```
