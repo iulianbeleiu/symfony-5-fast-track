@@ -42,3 +42,11 @@ Update database
 ```
 symfony console doctrine:migrations:migrate
 ```
+
+Install EasyAdmin
+```
+1. symfony composer req admin
+2. php bin/console make:admin:dashboard (create dashboard)
+3. php bin/console make:admin:crud (create crud controllers)
+
+```
