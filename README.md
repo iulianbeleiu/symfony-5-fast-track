@@ -17,7 +17,12 @@ symfony composer req maker --dev
 Discover all generators provided by maker bundle
 symfony composer req maker --dev
 
-E.g. Create a controller: symfony console make:controller ConferenceController
+E.g.
+Create controller
+symfony console make:controller ConferenceController
+
+Create entity
+symfony console make:entity Conference
 ```
 
 
