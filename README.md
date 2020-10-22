@@ -25,4 +25,8 @@ Create entity
 symfony console make:entity Conference
 ```
 
-
+Creating an Entity
+```
+If you add ? as an answer to the type, you get all supported types
+E.g OneToMany
+```
