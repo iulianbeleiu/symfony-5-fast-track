@@ -21,6 +21,7 @@ class ConferenceCrudController extends AbstractCrudController
         return [
             TextField::new('city'),
             TextField::new('year'),
+            TextField::new('slug'),
             BooleanField::new('isInternational'),
             AssociationField::new('comments'),
         ];
