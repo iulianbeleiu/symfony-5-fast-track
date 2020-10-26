@@ -43,6 +43,11 @@ class Comment
      */
     private $conference;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photoFilename;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -111,5 +116,17 @@ class Comment
     public function __toString(): string
     {
         return strval($this->id);
+    }
+
+    public function getPhotoFilename(): ?string
+    {
+        return $this->photoFilename;
+    }
+
+    public function setPhotoFilename(?string $photoFilename): self
+    {
+        $this->photoFilename = $photoFilename;
+
+        return $this;
     }
 }
