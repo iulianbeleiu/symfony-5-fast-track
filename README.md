@@ -73,3 +73,24 @@ Install Symfony Validator & Doctrine Annotations
 
 symfony composer require symfony/validator doctrine/annotations
 ```
+
+Scuring Admin Backend
+
+```
+symfony composer req security
+
+Create Admin User
+symfony console make:user Admin
+symfony console make:migration
+symfony console doctrine:migrations:migrate -n
+Generate password
+symfony console security:encode-password
+($argon2id$v=19$m=65536,t=4,p=1$f8g6Yv73sYIIRZoRyWhJuA$hNSe5OjLtH9NjiAMJxXzrn9ZztgnyuI3o6+igao8IJ8)
+
+sudo docker exec -it guestbook_database_1 bash
+psql -U main
+insert into admin values(1, 'admin', '["ROLE_ADMIN"]', '$argon2id$v=19$m=65536,t=4,p=1$f8g6Yv73sYIIRZoRyWhJuA$hNSe5OjLtH9NjiAMJxXzrn9ZztgnyuI3o6+igao8IJ8');
+
+Configuring the Security Authentication
+symfony console make:auth
+```
