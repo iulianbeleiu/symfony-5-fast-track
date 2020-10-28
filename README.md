@@ -79,5 +79,9 @@ Scuring Admin Backend
 ```
 symfony composer req security
 
+Create Admin User
+symfony console make:user Admin
+symfony console make:migration
+symfony console doctrine:migrations:migrate -n
 
 ```
