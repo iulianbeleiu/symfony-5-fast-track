@@ -8,6 +8,7 @@ use App\Form\CommentFormType;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -36,13 +37,24 @@ class ConferenceController extends AbstractController
     public function show(
         Request $request,
         Conference $conference,
-        CommentRepository $commentRepository
+        CommentRepository $commentRepository,
+        string $photoDir
     ) {
         $commet = new Comment();
         $form = $this->createForm(CommentFormType::class, $commet);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $commet->setConference($conference);
+
+            if ($photo = $form['photo']->getData()) {
+                $filename = bin2hex(random_bytes(6)) . '.' . $photo->guessExtension();
+                try {
+                    $photo->move($photoDir, $filename);
+                } catch (FileException $exception) {
+                    //unable to upload photo
+                }
+                $commet->setPhotoFilename($filename);
+            }
 
             $this->entityManager->persist($commet);
             $this->entityManager->flush();
