@@ -91,4 +91,6 @@ sudo docker exec -it guestbook_database_1 bash
 psql -U main
 insert into admin values(1, 'admin', '["ROLE_ADMIN"]', '$argon2id$v=19$m=65536,t=4,p=1$f8g6Yv73sYIIRZoRyWhJuA$hNSe5OjLtH9NjiAMJxXzrn9ZztgnyuI3o6+igao8IJ8');
 
+Configuring the Security Authentication
+symfony console make:auth
 ```
