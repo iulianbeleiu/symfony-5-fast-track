@@ -73,3 +73,11 @@ Install Symfony Validator & Doctrine Annotations
 
 symfony composer require symfony/validator doctrine/annotations
 ```
+
+Scuring Admin Backend
+
+```
+symfony composer req security
+
+
+```
