@@ -63,3 +63,13 @@ Implementing a Subscriber
 ```
 symfony console make:subscriber TwigEventSubscriber
 ```
+
+Working with forms
+
+```
+symfony console make:form CommentFormType Comment
+
+Install Symfony Validator & Doctrine Annotations
+
+symfony composer require symfony/validator doctrine/annotations
+```
