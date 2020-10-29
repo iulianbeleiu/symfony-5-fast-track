@@ -119,4 +119,13 @@ symfony composer req orm-fixtures --dev
 
 Load fixtures
 symfony console doctrine:fixtures:load
+
+Create test database
+APP_ENV=test symfony console doctrine:database:create
+
+Run test migrations
+APP_ENV=test symfony console doctrine:migrations:migrate
+
+Load fixtures on test database
+APP_ENV=test symfony console doctrine:fixtures:load
 ```
