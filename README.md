@@ -117,4 +117,6 @@ symfony console make:functional-test Controller\\ConferenceController
 Install fixtures
 symfony composer req orm-fixtures --dev
 
+Load fixtures
+symfony console doctrine:fixtures:load
 ```
