@@ -129,3 +129,9 @@ APP_ENV=test symfony console doctrine:migrations:migrate
 Load fixtures on test database
 APP_ENV=test symfony console doctrine:fixtures:load
 ```
+
+Going Async
+```
+Install Messenger
+symfony composer req messenger
+```
