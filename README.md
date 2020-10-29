@@ -99,3 +99,33 @@ Store secrets
 ```
 symfony console secrets:set AKISMET_KEY
 ```
+
+Testing
+```
+Create unit test
+symfony console make:unit-test SpamCheckerTest
+
+Run tests
+symfony run bin/phpunit
+
+For functional tests install
+symfony composer require browser-kit --dev
+
+Create functional test
+symfony console make:functional-test Controller\\ConferenceController
+
+Install fixtures
+symfony composer req orm-fixtures --dev
+
+Load fixtures
+symfony console doctrine:fixtures:load
+
+Create test database
+APP_ENV=test symfony console doctrine:database:create
+
+Run test migrations
+APP_ENV=test symfony console doctrine:migrations:migrate
+
+Load fixtures on test database
+APP_ENV=test symfony console doctrine:fixtures:load
+```
