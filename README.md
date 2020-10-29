@@ -99,3 +99,13 @@ Store secrets
 ```
 symfony console secrets:set AKISMET_KEY
 ```
+
+Testing
+```
+Create unit test
+symfony console make:unit-test SpamCheckerTest
+
+Run tests
+symfony run bin/phpunit
+
+```
