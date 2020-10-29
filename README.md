@@ -113,4 +113,8 @@ symfony composer require browser-kit --dev
 
 Create functional test
 symfony console make:functional-test Controller\\ConferenceController
+
+Install fixtures
+symfony composer req orm-fixtures --dev
+
 ```
