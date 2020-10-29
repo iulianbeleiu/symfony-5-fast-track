@@ -27,6 +27,7 @@ class CommentCrudController extends AbstractCrudController
             EmailField::new('email'),
             AssociationField::new('conference'),
             TextField::new('photoFilename'),
+            TextField::new('state'),
         ];
     }
 }
