@@ -108,4 +108,9 @@ symfony console make:unit-test SpamCheckerTest
 Run tests
 symfony run bin/phpunit
 
+For functional tests install
+symfony composer require browser-kit --dev
+
+Create functional test
+symfony console make:functional-test Controller\\ConferenceController
 ```
