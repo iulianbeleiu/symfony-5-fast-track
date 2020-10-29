@@ -6,6 +6,7 @@ use App\Entity\Comment;
 use App\Entity\Conference;
 use App\Form\CommentFormType;
 use App\Repository\CommentRepository;
+use App\SpamChecker;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -38,13 +39,14 @@ class ConferenceController extends AbstractController
         Request $request,
         Conference $conference,
         CommentRepository $commentRepository,
+        SpamChecker $spamChecker,
         string $photoDir
     ) {
-        $commet = new Comment();
-        $form = $this->createForm(CommentFormType::class, $commet);
+        $comment = new Comment();
+        $form = $this->createForm(CommentFormType::class, $comment);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $commet->setConference($conference);
+            $comment->setConference($conference);
 
             if ($photo = $form['photo']->getData()) {
                 $filename = bin2hex(random_bytes(6)) . '.' . $photo->guessExtension();
@@ -53,10 +55,22 @@ class ConferenceController extends AbstractController
                 } catch (FileException $exception) {
                     //unable to upload photo
                 }
-                $commet->setPhotoFilename($filename);
+                $comment->setPhotoFilename($filename);
             }
 
-            $this->entityManager->persist($commet);
+            $this->entityManager->persist($comment);
+
+            $context = [
+                'user_ip' => $request->getClientIp(),
+                'user_agent' => $request->headers->get('user-agent'),
+                'referrer' => $request->headers->get('referer'),
+                'permalink' => $request->getUri(),
+                ];
+
+            if (2 === $spamChecker->getSpamScore($comment, $context)) {
+                throw new \RuntimeException('Blatant spam, go away!');
+            }
+
             $this->entityManager->flush();
 
             return $this->redirectToRoute(

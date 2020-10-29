@@ -94,3 +94,8 @@ insert into admin values(1, 'admin', '["ROLE_ADMIN"]', '$argon2id$v=19$m=65536,t
 Configuring the Security Authentication
 symfony console make:auth
 ```
+
+Store secrets
+```
+symfony console secrets:set AKISMET_KEY
+```
